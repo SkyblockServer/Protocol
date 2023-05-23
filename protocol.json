@@ -1,0 +1,11 @@
+{
+  "Identify": {
+    "id": 1,
+    "direction": "outgoing",
+    "data": {
+      "username": "string",
+      "uuid": "string",
+      "apiKey": "string"
+    }
+  }
+}

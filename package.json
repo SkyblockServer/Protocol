@@ -1,0 +1,27 @@
+{
+  "name": "@skyblock-server/protocol",
+  "version": "1.0.0",
+  "description": "SkyblockServer Protocol NPM Package",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "npm run generate && npm run clean && tsc",
+    "clean": "node scripts/clean.mjs",
+    "generate": "autobuf -f protocol.json -o src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SkyblockServer/Protocol.git"
+  },
+  "author": "TBHGodPro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SkyblockServer/Protocol/issues"
+  },
+  "homepage": "https://github.com/SkyblockServer/Protocol#readme",
+  "devDependencies": {
+    "@types/node": "^20.2.3",
+    "autobuf": "^1.0.2",
+    "typescript": "^5.0.4"
+  }
+}
