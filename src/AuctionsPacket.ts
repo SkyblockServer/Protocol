@@ -16,24 +16,24 @@ export default class AuctionsPacket extends Packet<Auctions> {
     this.buf.writeVarInt(AuctionsPacket.id); // Packet ID
     
     this.buf.writeVarInt(data.auctions.length);
-    for (const Mw of data.auctions) {
-      this.buf.writeString(Mw.auction_id);
-      this.buf.writeString(Mw.seller);
-      this.buf.writeString(Mw.seller_profile);
-      this.buf.writeString(Mw.itemData);
-        this.buf.writeLong(Mw.timestamps.start);
-        this.buf.writeLong(Mw.timestamps.end);
-      this.buf.writeBoolean(Mw.claimed);
-      this.buf.writeBoolean(Mw.ended);
-      this.buf.writeLong(Mw.startingBid);
-      this.buf.writeLong(Mw.highestBid);
-      this.buf.writeLong(Mw.lastUpdated);
-      this.buf.writeVarInt(Mw.bids.length);
-      for (const kb of Mw.bids) {
-        this.buf.writeString(kb.bidder);
-        this.buf.writeString(kb.bidder_profile);
-        this.buf.writeLong(kb.amount);
-        this.buf.writeLong(kb.timestamp);
+    for (const SK of data.auctions) {
+      this.buf.writeString(SK.auction_id);
+      this.buf.writeString(SK.seller);
+      this.buf.writeString(SK.seller_profile);
+      this.buf.writeString(SK.itemData);
+        this.buf.writeLong(SK.timestamps.start);
+        this.buf.writeLong(SK.timestamps.end);
+      this.buf.writeBoolean(SK.claimed);
+      this.buf.writeBoolean(SK.ended);
+      this.buf.writeLong(SK.startingBid);
+      this.buf.writeLong(SK.highestBid);
+      this.buf.writeLong(SK.lastUpdated);
+      this.buf.writeVarInt(SK.bids.length);
+      for (const YO of SK.bids) {
+        this.buf.writeString(YO.bidder);
+        this.buf.writeString(YO.bidder_profile);
+        this.buf.writeLong(YO.amount);
+        this.buf.writeLong(YO.timestamp);
       }
     }
   }

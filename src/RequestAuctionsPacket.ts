@@ -16,14 +16,18 @@ export default class RequestAuctionsPacket extends Packet<RequestAuctions> {
     this.buf.writeVarInt(RequestAuctionsPacket.id); // Packet ID
     
     this.buf.writeVarInt(data.filters.length);
-    for (const AD of data.filters) {
-      this.buf.writeString(AD.type);
-      this.buf.writeString(AD.value);
+    for (const KS of data.filters) {
+      this.buf.writeString(KS.type);
+      this.buf.writeString(KS.value);
     }
     
     this.buf.writeString(data.query);
     
     this.buf.writeString(data.order);
+    
+    this.buf.writeShort(data.start);
+    
+    this.buf.writeShort(data.amount);
   }
 
   public read(): RequestAuctions {
@@ -40,6 +44,10 @@ export default class RequestAuctionsPacket extends Packet<RequestAuctions> {
     this.data.query = this.buf.readString();
     
     this.data.order = this.buf.readString();
+    
+    this.data.start = this.buf.readShort();
+    
+    this.data.amount = this.buf.readShort();
 
     return this.data;
   }
@@ -52,4 +60,6 @@ interface RequestAuctions {
   }[];
   query: string;
   order: string;
+  start: number;
+  amount: number;
 }
