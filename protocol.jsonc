@@ -43,7 +43,7 @@
           // [type (converted to lowercase)] = [value]
 
           // Category = weapon | armor | accessories | consumables | blocks | misc
-          // Rarity = common | uncommon | rare | epic | legendary | mythic | divine | special | very special
+          // Rarity = COMMON | UNCOMMON | RARE | EPIC | LEGENDARY | MYTHIC | DIVINE | SPECIAL | VERY_SPECIAL
           // Type = any | auction | bin
 
           "type": "string",
@@ -52,7 +52,7 @@
       },
       // Empty string if none
       "query": "string",
-      // high_price | low_price | end | random
+      // high_price | low_price | end_near | end_far | random
       "order": "string",
       // 0-based index of the first item (includes it)
       "start": "short",
