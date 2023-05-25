@@ -16,24 +16,25 @@ export default class AuctionsPacket extends Packet<Auctions> {
     this.buf.writeVarInt(AuctionsPacket.id); // Packet ID
     
     this.buf.writeVarInt(data.auctions.length);
-    for (const SK of data.auctions) {
-      this.buf.writeString(SK.auction_id);
-      this.buf.writeString(SK.seller);
-      this.buf.writeString(SK.seller_profile);
-      this.buf.writeString(SK.itemData);
-        this.buf.writeLong(SK.timestamps.start);
-        this.buf.writeLong(SK.timestamps.end);
-      this.buf.writeBoolean(SK.claimed);
-      this.buf.writeBoolean(SK.ended);
-      this.buf.writeLong(SK.startingBid);
-      this.buf.writeLong(SK.highestBid);
-      this.buf.writeLong(SK.lastUpdated);
-      this.buf.writeVarInt(SK.bids.length);
-      for (const YO of SK.bids) {
-        this.buf.writeString(YO.bidder);
-        this.buf.writeString(YO.bidder_profile);
-        this.buf.writeLong(YO.amount);
-        this.buf.writeLong(YO.timestamp);
+    for (const cw of data.auctions) {
+      this.buf.writeString(cw.auction_id);
+      this.buf.writeString(cw.seller);
+      this.buf.writeString(cw.seller_profile);
+      this.buf.writeString(cw.itemBytes);
+      this.buf.writeString(cw.itemData);
+        this.buf.writeLong(cw.timestamps.start);
+        this.buf.writeLong(cw.timestamps.end);
+      this.buf.writeBoolean(cw.claimed);
+      this.buf.writeBoolean(cw.ended);
+      this.buf.writeLong(cw.startingBid);
+      this.buf.writeLong(cw.highestBid);
+      this.buf.writeLong(cw.lastUpdated);
+      this.buf.writeVarInt(cw.bids.length);
+      for (const MG of cw.bids) {
+        this.buf.writeString(MG.bidder);
+        this.buf.writeString(MG.bidder_profile);
+        this.buf.writeLong(MG.amount);
+        this.buf.writeLong(MG.timestamp);
       }
     }
   }
@@ -47,6 +48,7 @@ export default class AuctionsPacket extends Packet<Auctions> {
       this.data.auctions[auctionsIndex].auction_id = this.buf.readString();
       this.data.auctions[auctionsIndex].seller = this.buf.readString();
       this.data.auctions[auctionsIndex].seller_profile = this.buf.readString();
+      this.data.auctions[auctionsIndex].itemBytes = this.buf.readString();
       this.data.auctions[auctionsIndex].itemData = this.buf.readString();
         this.data.auctions[auctionsIndex].timestamps = {} as any;
         this.data.auctions[auctionsIndex].timestamps.start = this.buf.readLong();
@@ -76,6 +78,7 @@ interface Auctions {
     auction_id: string;
     seller: string;
     seller_profile: string;
+    itemBytes: string;
     itemData: string;
     timestamps: {
       start: number;

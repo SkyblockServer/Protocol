@@ -16,9 +16,9 @@ export default class RequestAuctionsPacket extends Packet<RequestAuctions> {
     this.buf.writeVarInt(RequestAuctionsPacket.id); // Packet ID
     
     this.buf.writeVarInt(data.filters.length);
-    for (const KS of data.filters) {
-      this.buf.writeString(KS.type);
-      this.buf.writeString(KS.value);
+    for (const kQ of data.filters) {
+      this.buf.writeString(kQ.type);
+      this.buf.writeString(kQ.value);
     }
     
     this.buf.writeString(data.query);
