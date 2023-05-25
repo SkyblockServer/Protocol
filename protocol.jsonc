@@ -1,0 +1,96 @@
+// All Incoming and Outgoing definitions are based on the Client's POV
+
+{
+  // Main
+  "Metadata": {
+    "id": 1,
+    "direction": "incoming",
+    "data": {
+      "heartbeat_interval": "int"
+    }
+  },
+  "Heartbeat": {
+    "id": 2,
+    "direction": "outgoing",
+    "data": {}
+  },
+  "SessionCreate": {
+    "id": 4,
+    "direction": "incoming",
+    "data": {
+      "session_id": "string",
+      "seq": "short"
+    }
+  },
+  "Identify": {
+    "id": 3,
+    "direction": "outgoing",
+    "data": {
+      "uuid": "string",
+      "username": "string",
+      "apiKey": "string"
+    }
+  },
+
+  // Auctions
+  "RequestAuctions": {
+    "id": 4,
+    "direction": "outgoing",
+    "data": {
+      "filters": {
+        "type": "array",
+        "data": {
+          // [type (converted to lowercase)] = [value]
+
+          // Category = weapon | armor | accessories | consumables | blocks | misc
+          // Rarity = common | uncommon | rare | epic | legendary | mythic | divine | special | very special
+          // Type = any | auction | bin
+
+          "type": "string",
+          "value": "string"
+        }
+      },
+      // Empty string if none
+      "query": "string",
+      // high_price | low_price | end | random
+      "order": "string"
+    }
+  },
+  "Auctions": {
+    "id": 5,
+    "direction": "incoming",
+    "data": {
+      "auctions": {
+        "type": "array",
+        "data": {
+          "auction_id": "string",
+          "seller": "string",
+          "seller_profile": "string",
+          // Stringified block data
+          "itemData": "string",
+          "timestamps": {
+            "type": "object",
+            "data": {
+              "start": "long",
+              "end": "long"
+            }
+          },
+          "claimed": "boolean",
+          "ended": "boolean",
+          "startingBid": "long",
+          "highestBid": "long",
+          "lastUpdated": "long",
+          "bids": {
+            "type": "array",
+            "data": {
+              "bidder": "string",
+              "bidder_profile": "string",
+              "amount": "long",
+              "timestamp": "long"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -3,7 +3,7 @@ import { BufWrapper } from './BufWrapper';
 import Packet from './Packet';
 
 export default class IdentifyPacket extends Packet<Identify> {
-  public static readonly id = 1;
+  public static readonly id = 3;
 
   public constructor(buf?: BufWrapper) {
     super(buf);
@@ -15,9 +15,9 @@ export default class IdentifyPacket extends Packet<Identify> {
     this.buf = new BufWrapper(null, { oneConcat: true });
     this.buf.writeVarInt(IdentifyPacket.id); // Packet ID
     
-    this.buf.writeString(data.username);
-    
     this.buf.writeString(data.uuid);
+    
+    this.buf.writeString(data.username);
     
     this.buf.writeString(data.apiKey);
   }
@@ -25,9 +25,9 @@ export default class IdentifyPacket extends Packet<Identify> {
   public read(): Identify {
     this.data = {} as any;
     
-    this.data.username = this.buf.readString();
-    
     this.data.uuid = this.buf.readString();
+    
+    this.data.username = this.buf.readString();
     
     this.data.apiKey = this.buf.readString();
 
@@ -36,7 +36,7 @@ export default class IdentifyPacket extends Packet<Identify> {
 }
 
 interface Identify {
-  username: string;
   uuid: string;
+  username: string;
   apiKey: string;
 }

@@ -1,14 +1,21 @@
 import { BufWrapper } from "./BufWrapper";
 import Packet from "./Packet";
   
+import MetadataPacket from "./MetadataPacket";
+import HeartbeatPacket from "./HeartbeatPacket";
+import SessionCreatePacket from "./SessionCreatePacket";
 import IdentifyPacket from "./IdentifyPacket";
+import RequestAuctionsPacket from "./RequestAuctionsPacket";
+import AuctionsPacket from "./AuctionsPacket";
   
 export type ArrayElement<ArrayType extends readonly unknown[]> = ArrayType extends readonly (infer ElementType)[] ? ElementType : never;
 
 // Incoming
 
-export const IncomingPackets: (typeof Packet<any>)[] = [
-
+export const IncomingPackets = [
+  MetadataPacket,
+  SessionCreatePacket,
+  AuctionsPacket,
 ];
 
 export type IncomingPacketTypes = {
@@ -16,7 +23,9 @@ export type IncomingPacketTypes = {
 };
 
 export enum IncomingPacketIDs {
-
+  Metadata = 1,
+  SessionCreate = 4,
+  Auctions = 5,
 };
 
 export function writeIncomingPacket<T extends keyof IncomingPacketTypes>(
@@ -59,7 +68,9 @@ export function readIncomingPacket<T extends keyof IncomingPacketTypes>(data: Bu
 // Outgoing
 
 export const OutgoingPackets = [
+  HeartbeatPacket,
   IdentifyPacket,
+  RequestAuctionsPacket,
 ];
 
 export type OutgoingPacketTypes = {
@@ -67,7 +78,9 @@ export type OutgoingPacketTypes = {
 };
 
 export enum OutgoingPacketIDs {
-  Identify = 1,
+  Heartbeat = 2,
+  Identify = 3,
+  RequestAuctions = 4,
 };
 
 export function writeOutgoingPacket<T extends keyof OutgoingPacketTypes>(
