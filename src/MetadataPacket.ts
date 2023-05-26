@@ -21,6 +21,7 @@ export default class MetadataPacket extends Packet<Metadata> {
   }
 
   public read(): Metadata {
+    this.data = {} as any;
     
     this.data.heartbeat_interval = this.buf.readInt();
 

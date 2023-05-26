@@ -42,6 +42,7 @@ export default class AuctionsPacket extends Packet<Auctions> {
   }
 
   public read(): Auctions {
+    this.data = {} as any;
     
     this.data.auctions = [];
     const auctionsLength = this.buf.readVarInt();

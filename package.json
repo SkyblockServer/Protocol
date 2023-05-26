@@ -21,7 +21,7 @@
   "homepage": "https://github.com/SkyblockServer/Protocol#readme",
   "devDependencies": {
     "@types/node": "^20.2.3",
-    "autobuf": "^1.0.10",
+    "autobuf": "^1.0.11",
     "typescript": "^5.0.4"
   }
 }
