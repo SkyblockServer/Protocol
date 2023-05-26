@@ -16,6 +16,8 @@ export default class MetadataPacket extends Packet<Metadata> {
     this.buf.writeVarInt(MetadataPacket.id); // Packet ID
     
     this.buf.writeInt(data.heartbeat_interval);
+
+    this.buf.finish();
   }
 
   public read(): Metadata {

@@ -28,6 +28,8 @@ export default class RequestAuctionsPacket extends Packet<RequestAuctions> {
     this.buf.writeShort(data.start);
     
     this.buf.writeShort(data.amount);
+
+    this.buf.finish();
   }
 
   public read(): RequestAuctions {

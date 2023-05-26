@@ -18,6 +18,8 @@ export default class SessionCreatePacket extends Packet<SessionCreate> {
     this.buf.writeString(data.session_id);
     
     this.buf.writeShort(data.seq);
+
+    this.buf.finish();
   }
 
   public read(): SessionCreate {

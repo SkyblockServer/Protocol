@@ -20,6 +20,8 @@ export default class IdentifyPacket extends Packet<Identify> {
     this.buf.writeString(data.username);
     
     this.buf.writeString(data.apiKey);
+
+    this.buf.finish();
   }
 
   public read(): Identify {

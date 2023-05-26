@@ -15,6 +15,8 @@ export default class HeartbeatPacket extends Packet<Heartbeat> {
     this.buf = new BufWrapper(null, { oneConcat: true });
     this.buf.writeVarInt(HeartbeatPacket.id); // Packet ID
 
+
+    this.buf.finish();
   }
 
   public read(): Heartbeat {

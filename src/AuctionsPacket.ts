@@ -37,6 +37,8 @@ export default class AuctionsPacket extends Packet<Auctions> {
         this.buf.writeLong(e.timestamp);
       }
     }
+
+    this.buf.finish();
   }
 
   public read(): Auctions {
