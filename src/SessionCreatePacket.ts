@@ -33,7 +33,8 @@ export default class SessionCreatePacket extends Packet<SessionCreate> {
   }
 }
 
-interface SessionCreate {
+export interface SessionCreate {
   session_id: string;
   seq: number;
 }
+

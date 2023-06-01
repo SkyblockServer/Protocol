@@ -26,6 +26,7 @@ export default class HeartbeatPacket extends Packet<Heartbeat> {
   }
 }
 
-interface Heartbeat {
+export interface Heartbeat {
 
 }
+

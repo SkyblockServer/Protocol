@@ -37,8 +37,9 @@ export default class IdentifyPacket extends Packet<Identify> {
   }
 }
 
-interface Identify {
+export interface Identify {
   uuid: string;
   username: string;
   apiKey: string;
 }
+

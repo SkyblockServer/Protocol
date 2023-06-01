@@ -20,8 +20,8 @@
   },
   "homepage": "https://github.com/SkyblockServer/Protocol#readme",
   "devDependencies": {
-    "@types/node": "^20.2.3",
-    "autobuf": "^1.0.12",
+    "@types/node": "^20.2.5",
+    "autobuf": "^1.0.13",
     "typescript": "^5.0.4"
   }
 }

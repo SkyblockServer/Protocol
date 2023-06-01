@@ -23,7 +23,7 @@ export default class RequestAuctionsPacket extends Packet<RequestAuctions> {
     
     this.buf.writeString(data.query);
     
-    this.buf.writeString(data.order);
+    this.buf.writeShort(OrdersEnum[data.order]);
     
     this.buf.writeShort(data.start);
     
@@ -45,7 +45,7 @@ export default class RequestAuctionsPacket extends Packet<RequestAuctions> {
     
     this.data.query = this.buf.readString();
     
-    this.data.order = this.buf.readString();
+    this.data.order = OrdersEnum[this.buf.readShort()] as any;
     
     this.data.start = this.buf.readShort();
     
@@ -55,13 +55,21 @@ export default class RequestAuctionsPacket extends Packet<RequestAuctions> {
   }
 }
 
-interface RequestAuctions {
+export interface RequestAuctions {
   filters: {
     type: string;
     value: string;
   }[];
   query: string;
-  order: string;
+  order: "high_price" | "low_price" | "end_near" | "end_far" | "random";
   start: number;
   amount: number;
+}
+
+export enum OrdersEnum {
+  high_price = 0,
+  low_price = 1,
+  end_near = 2,
+  end_far = 3,
+  random = 4,
 }

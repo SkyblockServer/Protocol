@@ -76,7 +76,7 @@ export default class AuctionsPacket extends Packet<Auctions> {
   }
 }
 
-interface Auctions {
+export interface Auctions {
   auctions: {
     auction_id: string;
     seller: string;
@@ -100,3 +100,4 @@ interface Auctions {
     }[];
   }[];
 }
+

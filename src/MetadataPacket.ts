@@ -29,6 +29,7 @@ export default class MetadataPacket extends Packet<Metadata> {
   }
 }
 
-interface Metadata {
+export interface Metadata {
   heartbeat_interval: number;
 }
+
