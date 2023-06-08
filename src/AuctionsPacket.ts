@@ -22,6 +22,10 @@ export default class AuctionsPacket extends Packet<Auctions> {
       this.buf.writeString(i.seller_profile);
       this.buf.writeString(i.itemBytes);
       this.buf.writeString(i.itemData);
+        this.buf.writeString(i.data.name);
+        this.buf.writeStringArray(i.data.lore);
+        this.buf.writeShort(AuctionCategoriesEnum[i.data.category]);
+        this.buf.writeShort(ItemRaritiesEnum[i.data.rarity]);
         this.buf.writeLong(i.timestamps.start);
         this.buf.writeLong(i.timestamps.end);
       this.buf.writeBoolean(i.claimed);
@@ -53,6 +57,11 @@ export default class AuctionsPacket extends Packet<Auctions> {
       this.data.auctions[auctionsIndex].seller_profile = this.buf.readString();
       this.data.auctions[auctionsIndex].itemBytes = this.buf.readString();
       this.data.auctions[auctionsIndex].itemData = this.buf.readString();
+        this.data.auctions[auctionsIndex].data = {} as any;
+        this.data.auctions[auctionsIndex].data.name = this.buf.readString();
+        this.data.auctions[auctionsIndex].data.lore = this.buf.readStringArray();
+        this.data.auctions[auctionsIndex].data.category = AuctionCategoriesEnum[this.buf.readShort()] as any;
+        this.data.auctions[auctionsIndex].data.rarity = ItemRaritiesEnum[this.buf.readShort()] as any;
         this.data.auctions[auctionsIndex].timestamps = {} as any;
         this.data.auctions[auctionsIndex].timestamps.start = this.buf.readLong();
         this.data.auctions[auctionsIndex].timestamps.end = this.buf.readLong();
@@ -83,6 +92,12 @@ export interface Auctions {
     seller_profile: string;
     itemBytes: string;
     itemData: string;
+    data: {
+      name: string;
+      lore: string[];
+      category: "weapon" | "armor" | "accessories" | "consumables" | "blocks" | "misc";
+      rarity: "COMMON" | "UNCOMMON" | "RARE" | "EPIC" | "LEGENDARY" | "MYTHIC" | "DIVINE" | "SPECIAL" | "VERY_SPECIAL";
+    };
     timestamps: {
       start: number;
       end: number;
@@ -101,3 +116,23 @@ export interface Auctions {
   }[];
 }
 
+export enum AuctionCategoriesEnum {
+  weapon = 0,
+  armor = 1,
+  accessories = 2,
+  consumables = 3,
+  blocks = 4,
+  misc = 5,
+}
+
+export enum ItemRaritiesEnum {
+  COMMON = 0,
+  UNCOMMON = 1,
+  RARE = 2,
+  EPIC = 3,
+  LEGENDARY = 4,
+  MYTHIC = 5,
+  DIVINE = 6,
+  SPECIAL = 7,
+  VERY_SPECIAL = 8,
+}

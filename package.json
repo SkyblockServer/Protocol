@@ -1,6 +1,6 @@
 {
   "name": "@skyblock-server/protocol",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "SkyblockServer Protocol NPM Package",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -21,7 +21,7 @@
   "homepage": "https://github.com/SkyblockServer/Protocol#readme",
   "devDependencies": {
     "@types/node": "^20.2.5",
-    "autobuf": "^1.0.16",
+    "autobuf": "^1.0.18",
     "typescript": "^5.0.4"
   }
 }

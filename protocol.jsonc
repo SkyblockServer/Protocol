@@ -77,6 +77,23 @@
           "itemBytes": "string",
           // Stringified block data
           "itemData": "string",
+          "data": {
+            "type": "object",
+            "data": {
+              "name": "string",
+              "lore": "stringArray",
+              "category": {
+                "type": "enum",
+                "name": "AuctionCategories",
+                "values": ["weapon", "armor", "accessories", "consumables", "blocks", "misc"]
+              },
+              "rarity": {
+                "type": "enum",
+                "name": "ItemRarities",
+                "values": ["COMMON", "UNCOMMON", "RARE", "EPIC", "LEGENDARY", "MYTHIC", "DIVINE", "SPECIAL", "VERY_SPECIAL"]
+              }
+            }
+          },
           "timestamps": {
             "type": "object",
             "data": {
