@@ -30,6 +30,7 @@ export default class AuctionsPacket extends Packet<Auctions> {
         this.buf.writeLong(i.timestamps.end);
       this.buf.writeBoolean(i.claimed);
       this.buf.writeBoolean(i.ended);
+      this.buf.writeBoolean(i.bin);
       this.buf.writeLong(i.startingBid);
       this.buf.writeLong(i.highestBid);
       this.buf.writeLong(i.lastUpdated);
@@ -67,6 +68,7 @@ export default class AuctionsPacket extends Packet<Auctions> {
         this.data.auctions[auctionsIndex].timestamps.end = this.buf.readLong();
       this.data.auctions[auctionsIndex].claimed = this.buf.readBoolean();
       this.data.auctions[auctionsIndex].ended = this.buf.readBoolean();
+      this.data.auctions[auctionsIndex].bin = this.buf.readBoolean();
       this.data.auctions[auctionsIndex].startingBid = this.buf.readLong();
       this.data.auctions[auctionsIndex].highestBid = this.buf.readLong();
       this.data.auctions[auctionsIndex].lastUpdated = this.buf.readLong();
@@ -104,6 +106,7 @@ export interface Auctions {
     };
     claimed: boolean;
     ended: boolean;
+    bin: boolean;
     startingBid: number;
     highestBid: number;
     lastUpdated: number;

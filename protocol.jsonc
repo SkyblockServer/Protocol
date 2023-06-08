@@ -103,6 +103,7 @@
           },
           "claimed": "boolean",
           "ended": "boolean",
+          "bin": "boolean",
           "startingBid": "long",
           "highestBid": "long",
           "lastUpdated": "long",
